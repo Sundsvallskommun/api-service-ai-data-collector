@@ -1,13 +1,5 @@
 package se.sundsvall.aidatacollector.datasource.confluence.integration.confluence;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.when;
-import static org.zalando.problem.Status.INTERNAL_SERVER_ERROR;
-import static se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.ConfluenceIntegrationConfiguration.CLIENT_ID;
-
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,6 +8,14 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationContext;
 import org.zalando.problem.ThrowableProblem;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
+import static org.zalando.problem.Status.INTERNAL_SERVER_ERROR;
+import static se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.ConfluenceIntegrationConfiguration.CLIENT_ID;
 
 @ExtendWith(MockitoExtension.class)
 class ConfluenceClientRegistryTests {

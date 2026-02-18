@@ -1,12 +1,5 @@
 package se.sundsvall.aidatacollector.datasource.confluence.api;
 
-import static java.util.Optional.ofNullable;
-import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
-import static org.springframework.http.MediaType.ALL_VALUE;
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.http.ResponseEntity.ok;
-import static org.zalando.problem.Status.FORBIDDEN;
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -22,6 +15,13 @@ import se.sundsvall.aidatacollector.datasource.confluence.api.model.ConfluenceWe
 import se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.ConfluenceIntegrationProperties;
 import se.sundsvall.aidatacollector.datasource.confluence.model.EventType;
 import se.sundsvall.dept44.common.validators.annotation.ValidMunicipalityId;
+
+import static java.util.Optional.ofNullable;
+import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
+import static org.springframework.http.MediaType.ALL_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.http.ResponseEntity.ok;
+import static org.zalando.problem.Status.FORBIDDEN;
 
 @RestController
 @Tag(name = "Confluence Datasource Resources")

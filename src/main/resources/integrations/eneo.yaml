@@ -19592,43 +19592,18 @@ components:
           title: Response Timestamp Utc
         crawler_activity:
           $ref: '#/components/schemas/CrawlerActivity'
-          default:
-            db_query_ok: true
-            arq_ongoing: 0
         arq:
           $ref: '#/components/schemas/ARQHealth'
-          default:
-            j_complete: 0
-            j_failed: 0
-            j_retried: 0
-            j_ongoing: 0
-            queued: 0
         watchdog:
           $ref: '#/components/schemas/WatchdogMetrics'
-          default:
-            zombies_reconciled: 0
-            expired_killed: 0
-            rescued: 0
-            early_zombies_failed: 0
-            long_running_failed: 0
-            slots_released: 0
         feeder:
           $ref: '#/components/schemas/FeederLeader'
-          default:
-            status: UNKNOWN
         pending:
           $ref: '#/components/schemas/PendingQueueSummary'
-          default:
-            total: 0
-            tenant_count: 0
-            top_tenants: { }
         thresholds:
           $ref: '#/components/schemas/HealthThresholds'
         debug:
           $ref: '#/components/schemas/DebugInfo'
-          default:
-            arq_raw: ''
-            queue_name: 'arq:queue'
       required:
         - response_timestamp_utc
         - status

@@ -1,11 +1,11 @@
 package se.sundsvall.aidatacollector.datasource.confluence.integration.confluence;
 
-import static org.zalando.problem.Status.INTERNAL_SERVER_ERROR;
-import static se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.ConfluenceIntegrationConfiguration.CLIENT_ID;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import org.zalando.problem.Problem;
+
+import static org.zalando.problem.Status.INTERNAL_SERVER_ERROR;
+import static se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.ConfluenceIntegrationConfiguration.CLIENT_ID;
 
 @Component
 public class ConfluenceClientRegistry {

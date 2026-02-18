@@ -1,11 +1,11 @@
 package se.sundsvall.aidatacollector.datasource.confluence.integration.confluence;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import se.sundsvall.aidatacollector.test.annotation.UnitTest;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @UnitTest
 @SpringBootTest

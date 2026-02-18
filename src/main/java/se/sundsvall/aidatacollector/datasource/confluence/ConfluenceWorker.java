@@ -1,9 +1,5 @@
 package se.sundsvall.aidatacollector.datasource.confluence;
 
-import static java.time.temporal.ChronoUnit.SECONDS;
-import static java.util.stream.Collectors.toMap;
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
-
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +14,10 @@ import se.sundsvall.aidatacollector.datasource.confluence.integration.db.DbInteg
 import se.sundsvall.aidatacollector.datasource.confluence.model.Page;
 import se.sundsvall.aidatacollector.integration.eneo.EneoIntegration;
 import se.sundsvall.dept44.requestid.RequestId;
+
+import static java.time.temporal.ChronoUnit.SECONDS;
+import static java.util.stream.Collectors.toMap;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 @Transactional
 class ConfluenceWorker implements Runnable {

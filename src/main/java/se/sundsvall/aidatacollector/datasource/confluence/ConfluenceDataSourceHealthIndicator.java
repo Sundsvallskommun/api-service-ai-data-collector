@@ -1,11 +1,11 @@
 package se.sundsvall.aidatacollector.datasource.confluence;
 
-import static java.util.Optional.ofNullable;
-
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.boot.actuate.health.Status;
 import org.springframework.stereotype.Component;
+
+import static java.util.Optional.ofNullable;
 
 @Component
 class ConfluenceDataSourceHealthIndicator implements HealthIndicator {

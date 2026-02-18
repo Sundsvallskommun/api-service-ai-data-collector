@@ -1,19 +1,5 @@
 package se.sundsvall.aidatacollector.datasource.confluence.api;
 
-import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
-import static com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT;
-import static org.apache.commons.codec.digest.HmacAlgorithms.HMAC_SHA_256;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoInteractions;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
-import static org.springframework.http.MediaType.ALL_VALUE;
-import static org.springframework.http.MediaType.APPLICATION_JSON;
-import static org.springframework.http.MediaType.APPLICATION_PROBLEM_JSON_VALUE;
-import static org.springframework.web.reactive.function.BodyInserters.fromValue;
-import static se.sundsvall.aidatacollector.datasource.confluence.model.EventType.PAGE_CREATED;
-import static se.sundsvall.aidatacollector.datasource.confluence.model.EventType.PAGE_UPDATED;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Map;
@@ -32,6 +18,20 @@ import se.sundsvall.aidatacollector.datasource.confluence.api.model.ConfluenceWe
 import se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.ConfluenceIntegrationProperties;
 import se.sundsvall.aidatacollector.datasource.confluence.model.EventType;
 import se.sundsvall.aidatacollector.test.annotation.UnitTest;
+
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
+import static com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT;
+import static org.apache.commons.codec.digest.HmacAlgorithms.HMAC_SHA_256;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
+import static org.springframework.http.MediaType.ALL_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.http.MediaType.APPLICATION_PROBLEM_JSON_VALUE;
+import static org.springframework.web.reactive.function.BodyInserters.fromValue;
+import static se.sundsvall.aidatacollector.datasource.confluence.model.EventType.PAGE_CREATED;
+import static se.sundsvall.aidatacollector.datasource.confluence.model.EventType.PAGE_UPDATED;
 
 @UnitTest
 @SpringBootTest(classes = Application.class, webEnvironment = RANDOM_PORT)

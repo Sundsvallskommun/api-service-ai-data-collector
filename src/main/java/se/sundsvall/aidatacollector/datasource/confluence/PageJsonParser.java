@@ -1,7 +1,5 @@
 package se.sundsvall.aidatacollector.datasource.confluence;
 
-import static com.jayway.jsonpath.Option.SUPPRESS_EXCEPTIONS;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.DocumentContext;
@@ -11,6 +9,8 @@ import com.jayway.jsonpath.spi.json.JacksonJsonProvider;
 import com.jayway.jsonpath.spi.mapper.JacksonMappingProvider;
 import java.util.List;
 import org.springframework.stereotype.Component;
+
+import static com.jayway.jsonpath.Option.SUPPRESS_EXCEPTIONS;
 
 @Component
 class PageJsonParser {

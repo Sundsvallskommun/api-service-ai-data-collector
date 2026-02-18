@@ -1,11 +1,11 @@
 package se.sundsvall.aidatacollector.datasource.confluence.integration.confluence;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-
 import java.util.Optional;
 import org.springframework.cloud.openfeign.CollectionFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 public interface ConfluenceClient {
 
