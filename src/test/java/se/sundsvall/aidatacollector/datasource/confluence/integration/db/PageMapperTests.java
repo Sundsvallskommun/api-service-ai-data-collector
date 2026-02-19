@@ -1,15 +1,15 @@
 package se.sundsvall.aidatacollector.datasource.confluence.integration.db;
 
+import org.junit.jupiter.api.Test;
+import se.sundsvall.aidatacollector.datasource.confluence.integration.db.model.PageEntity;
+import se.sundsvall.aidatacollector.datasource.confluence.model.Page;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.sundsvall.aidatacollector.datasource.confluence.integration.db.DbIntegrationTests.ENEO_BLOB_ID;
 import static se.sundsvall.aidatacollector.datasource.confluence.integration.db.DbIntegrationTests.ENEO_GROUP_ID;
 import static se.sundsvall.aidatacollector.datasource.confluence.integration.db.DbIntegrationTests.MUNICIPALITY_ID;
 import static se.sundsvall.aidatacollector.datasource.confluence.integration.db.DbIntegrationTests.PAGE_ID;
 import static se.sundsvall.aidatacollector.datasource.confluence.integration.db.DbIntegrationTests.UPDATED_AT;
-
-import org.junit.jupiter.api.Test;
-import se.sundsvall.aidatacollector.datasource.confluence.integration.db.model.PageEntity;
-import se.sundsvall.aidatacollector.datasource.confluence.model.Page;
 
 class PageMapperTests {
 

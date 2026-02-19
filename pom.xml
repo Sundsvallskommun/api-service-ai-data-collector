@@ -4,13 +4,14 @@
 	<parent>
 		<groupId>se.sundsvall.dept44</groupId>
 		<artifactId>dept44-service-parent</artifactId>
-		<version>7.0.0</version>
+		<version>7.0.1</version>
 		<relativePath />
 	</parent>
 	<groupId>se.sundsvall</groupId>
 	<artifactId>ai-data-collector</artifactId>
 	<version>1.0</version>
 	<properties>
+		<openapi-generator-maven-plugin.version>7.20.0</openapi-generator-maven-plugin.version>
 		<shedlock.version>7.6.0</shedlock.version>
 		<jsoup.version>1.22.1</jsoup.version>
 		<auth0.java-jwt.version>4.5.0</auth0.java-jwt.version>
@@ -32,7 +33,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.testcontainers</groupId>
-			<artifactId>mariadb</artifactId>
+			<artifactId>testcontainers-mariadb</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<!-- Framework -->

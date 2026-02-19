@@ -1,15 +1,15 @@
 package se.sundsvall.aidatacollector.datasource.confluence.model;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static se.sundsvall.aidatacollector.datasource.confluence.model.EventType.PAGE_CREATED;
 import static se.sundsvall.aidatacollector.datasource.confluence.model.EventType.PAGE_REMOVED;
 import static se.sundsvall.aidatacollector.datasource.confluence.model.EventType.PAGE_RESTORED;
 import static se.sundsvall.aidatacollector.datasource.confluence.model.EventType.PAGE_UPDATED;
-
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 class EventTypeTests {
 

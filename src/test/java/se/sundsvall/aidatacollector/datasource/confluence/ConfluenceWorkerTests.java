@@ -1,14 +1,5 @@
 package se.sundsvall.aidatacollector.datasource.confluence;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.when;
-
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -27,6 +18,15 @@ import se.sundsvall.aidatacollector.datasource.confluence.integration.db.DbInteg
 import se.sundsvall.aidatacollector.datasource.confluence.model.Page;
 import se.sundsvall.aidatacollector.integration.eneo.EneoIntegration;
 import se.sundsvall.dept44.test.extension.ResourceLoaderExtension;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
 
 @ExtendWith({
 	MockitoExtension.class, ResourceLoaderExtension.class

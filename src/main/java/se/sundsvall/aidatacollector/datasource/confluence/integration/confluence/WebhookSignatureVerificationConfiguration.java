@@ -1,15 +1,5 @@
 package se.sundsvall.aidatacollector.datasource.confluence.integration.confluence;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
-import static java.util.Optional.ofNullable;
-import static java.util.stream.Collectors.toMap;
-import static org.apache.commons.codec.digest.HmacAlgorithms.HMAC_SHA_256;
-import static org.apache.commons.io.IOUtils.toByteArray;
-import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
-import static org.springframework.http.HttpStatus.FORBIDDEN;
-import static org.springframework.http.MediaType.APPLICATION_PROBLEM_JSON_VALUE;
-import static se.sundsvall.dept44.util.LogUtils.sanitizeForLogging;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import jakarta.servlet.FilterChain;
@@ -34,6 +24,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.filter.OncePerRequestFilter;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
+import static java.util.Optional.ofNullable;
+import static java.util.stream.Collectors.toMap;
+import static org.apache.commons.codec.digest.HmacAlgorithms.HMAC_SHA_256;
+import static org.apache.commons.io.IOUtils.toByteArray;
+import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
+import static org.springframework.http.HttpStatus.FORBIDDEN;
+import static org.springframework.http.MediaType.APPLICATION_PROBLEM_JSON_VALUE;
+import static se.sundsvall.dept44.util.LogUtils.sanitizeForLogging;
 
 @Configuration
 class WebhookSignatureVerificationConfiguration {

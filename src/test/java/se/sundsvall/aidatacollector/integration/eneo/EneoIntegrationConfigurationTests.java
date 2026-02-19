@@ -1,9 +1,9 @@
 package se.sundsvall.aidatacollector.integration.eneo;
 
+import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.sundsvall.aidatacollector.integration.eneo.EneoIntegrationConfiguration.INTEGRATION_NAME;
-
-import org.junit.jupiter.api.Test;
 
 class EneoIntegrationConfigurationTests {
 

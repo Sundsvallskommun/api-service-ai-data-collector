@@ -1,5 +1,13 @@
 package se.sundsvall.aidatacollector.datasource.confluence;
 
+import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.Status;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
@@ -11,14 +19,6 @@ import static org.springframework.boot.actuate.health.Status.UP;
 import static se.sundsvall.aidatacollector.datasource.confluence.ConfluenceDataSourceHealthIndicator.REASON;
 import static se.sundsvall.aidatacollector.datasource.confluence.ConfluenceDataSourceHealthIndicator.RESTRICTED;
 import static se.sundsvall.aidatacollector.datasource.confluence.ConfluenceDataSourceHealthIndicator.UNKNOWN_REASON;
-
-import java.util.stream.Stream;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.springframework.boot.actuate.health.Health;
-import org.springframework.boot.actuate.health.Status;
 
 class ConfluenceDataSourceHealthIndicatorTests {
 

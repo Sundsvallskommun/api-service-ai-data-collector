@@ -1,16 +1,5 @@
 package se.sundsvall.aidatacollector.datasource.confluence.integration.confluence;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.springframework.http.HttpStatus.FORBIDDEN;
-import static se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.WebhookSignatureVerificationConfiguration.SIGNATURE_HEADER;
-import static se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.WebhookSignatureVerificationConfiguration.SIGNATURE_PREFIX;
-
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletInputStream;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,6 +17,17 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.WebhookSignatureVerificationConfiguration.WebhookSignatureVerificationFilter;
 import se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.WebhookSignatureVerificationConfiguration.WebhookSignatureVerificationFilter.BodyCachingHttpServletRequestWrapper;
 import se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.WebhookSignatureVerificationConfiguration.WebhookSignatureVerificationFilter.BodyCachingServletInputStream;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.springframework.http.HttpStatus.FORBIDDEN;
+import static se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.WebhookSignatureVerificationConfiguration.SIGNATURE_HEADER;
+import static se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.WebhookSignatureVerificationConfiguration.SIGNATURE_PREFIX;
 
 @ExtendWith(MockitoExtension.class)
 class WebhookSignatureVerificationConfigurationTests {

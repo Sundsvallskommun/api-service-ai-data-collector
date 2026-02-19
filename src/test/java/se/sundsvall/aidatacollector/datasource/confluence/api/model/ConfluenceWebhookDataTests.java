@@ -1,9 +1,9 @@
 package se.sundsvall.aidatacollector.datasource.confluence.api.model;
 
+import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.sundsvall.aidatacollector.datasource.confluence.model.EventType.PAGE_CREATED;
-
-import org.junit.jupiter.api.Test;
 
 class ConfluenceWebhookDataTests {
 

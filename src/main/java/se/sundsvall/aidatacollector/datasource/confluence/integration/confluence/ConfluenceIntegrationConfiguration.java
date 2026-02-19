@@ -1,7 +1,5 @@
 package se.sundsvall.aidatacollector.datasource.confluence.integration.confluence;
 
-import static java.util.concurrent.TimeUnit.SECONDS;
-
 import feign.Request;
 import feign.auth.BasicAuthRequestInterceptor;
 import org.slf4j.Logger;
@@ -17,6 +15,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import se.sundsvall.dept44.configuration.feign.FeignConfiguration;
 import se.sundsvall.dept44.configuration.feign.decoder.ProblemErrorDecoder;
+
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 @Configuration
 @Import(FeignConfiguration.class)

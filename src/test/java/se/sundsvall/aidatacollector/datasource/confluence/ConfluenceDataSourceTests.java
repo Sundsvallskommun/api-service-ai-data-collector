@@ -1,13 +1,5 @@
 package se.sundsvall.aidatacollector.datasource.confluence;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doCallRealMethod;
-import static org.mockito.Mockito.mockConstruction;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.when;
-
 import java.time.Duration;
 import java.util.Map;
 import net.javacrumbs.shedlock.core.DefaultLockManager;
@@ -27,6 +19,14 @@ import se.sundsvall.aidatacollector.datasource.confluence.integration.confluence
 import se.sundsvall.aidatacollector.datasource.confluence.integration.db.DbIntegration;
 import se.sundsvall.aidatacollector.integration.eneo.EneoIntegration;
 import se.sundsvall.dept44.test.extension.ResourceLoaderExtension;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doCallRealMethod;
+import static org.mockito.Mockito.mockConstruction;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
 
 @ExtendWith({
 	MockitoExtension.class, ResourceLoaderExtension.class

@@ -1,7 +1,5 @@
 package se.sundsvall.aidatacollector.integration.eneo;
 
-import static org.zalando.problem.Status.INTERNAL_SERVER_ERROR;
-
 import generated.se.sundsvall.eneo.InfoBlobAddPublic;
 import generated.se.sundsvall.eneo.InfoBlobMetadataUpsertPublic;
 import generated.se.sundsvall.eneo.InfoBlobUpsertRequest;
@@ -9,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.zalando.problem.Problem;
+
+import static org.zalando.problem.Status.INTERNAL_SERVER_ERROR;
 
 @Service
 public class EneoIntegration {

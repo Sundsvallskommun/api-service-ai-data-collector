@@ -1,10 +1,10 @@
 package se.sundsvall.aidatacollector.datasource.confluence;
 
-import static java.util.Optional.ofNullable;
-
 import java.time.OffsetDateTime;
 import org.springframework.stereotype.Component;
 import se.sundsvall.aidatacollector.datasource.confluence.model.Page;
+
+import static java.util.Optional.ofNullable;
 
 @Component
 class ConfluencePageMapper {

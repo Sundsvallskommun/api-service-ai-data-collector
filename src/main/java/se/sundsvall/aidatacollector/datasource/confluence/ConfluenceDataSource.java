@@ -1,7 +1,5 @@
 package se.sundsvall.aidatacollector.datasource.confluence;
 
-import static org.zalando.problem.Status.INTERNAL_SERVER_ERROR;
-
 import java.time.Duration;
 import java.time.Instant;
 import java.util.HashMap;
@@ -22,6 +20,8 @@ import se.sundsvall.aidatacollector.datasource.confluence.integration.confluence
 import se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.ConfluenceIntegrationProperties;
 import se.sundsvall.aidatacollector.datasource.confluence.integration.db.DbIntegration;
 import se.sundsvall.aidatacollector.integration.eneo.EneoIntegration;
+
+import static org.zalando.problem.Status.INTERNAL_SERVER_ERROR;
 
 @Service
 public class ConfluenceDataSource {
