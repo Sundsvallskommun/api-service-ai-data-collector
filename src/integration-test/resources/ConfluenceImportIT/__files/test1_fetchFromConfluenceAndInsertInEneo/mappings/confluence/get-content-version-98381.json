@@ -1,0 +1,13 @@
+{
+	"request": {
+		"url": "/confluence/content/98381?expand=version",
+		"method": "GET"
+	},
+	"response": {
+		"headers": {
+			"Content-Type": "application/json"
+		},
+		"status": 200,
+		"bodyFileName": "test1_fetchFromConfluenceAndInsertInEneo/responses/confluence/98381.version.json"
+	}
+}
