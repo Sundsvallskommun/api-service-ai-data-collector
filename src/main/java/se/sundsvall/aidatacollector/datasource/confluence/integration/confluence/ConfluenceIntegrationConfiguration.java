@@ -2,17 +2,23 @@ package se.sundsvall.aidatacollector.datasource.confluence.integration.confluenc
 
 import feign.Request;
 import feign.auth.BasicAuthRequestInterceptor;
+import java.nio.charset.StandardCharsets;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.context.properties.bind.Binder;
+import org.springframework.boot.http.converter.autoconfigure.ClientHttpMessageConvertersCustomizer;
 import org.springframework.cloud.openfeign.FeignClientBuilder;
+import org.springframework.cloud.openfeign.support.FeignHttpMessageConverters;
+import org.springframework.cloud.openfeign.support.HttpMessageConverterCustomizer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import se.sundsvall.dept44.configuration.feign.FeignConfiguration;
 import se.sundsvall.dept44.configuration.feign.decoder.ProblemErrorDecoder;
 
@@ -28,6 +34,26 @@ class ConfluenceIntegrationConfiguration {
 
 	ConfluenceIntegrationConfiguration() {
 		// Intentionally left empty
+	}
+
+	@Bean
+	FeignHttpMessageConverters feignHttpMessageConverters(
+		final ObjectProvider<ClientHttpMessageConvertersCustomizer> customizers,
+		final ObjectProvider<HttpMessageConverterCustomizer> cloudCustomizers) {
+		return new FeignHttpMessageConverters(customizers, cloudCustomizers);
+	}
+
+	/**
+	 * Ensures StringHttpMessageConverter comes before JacksonJsonHttpMessageConverter in the Feign converter list. This
+	 * is needed because FeignConfiguration adds JacksonJsonHttpMessageConverter at position 0, which breaks Feign clients
+	 * that return String (Jackson 3.x cannot deserialize a JSON object into String).
+	 */
+	@Bean
+	HttpMessageConverterCustomizer stringHttpMessageConverterFirst() {
+		return converters -> {
+			converters.removeIf(StringHttpMessageConverter.class::isInstance);
+			converters.addFirst(new StringHttpMessageConverter(StandardCharsets.UTF_8));
+		};
 	}
 
 	@Bean

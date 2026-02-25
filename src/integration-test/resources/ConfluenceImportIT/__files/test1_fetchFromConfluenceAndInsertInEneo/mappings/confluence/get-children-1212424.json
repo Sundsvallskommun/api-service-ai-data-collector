@@ -1,0 +1,13 @@
+{
+	"request": {
+		"url": "/confluence/content/1212424/child/page",
+		"method": "GET"
+	},
+	"response": {
+		"headers": {
+			"Content-Type": "application/json"
+		},
+		"status": 200,
+		"bodyFileName": "test1_fetchFromConfluenceAndInsertInEneo/responses/confluence/1212424.children.json"
+	}
+}

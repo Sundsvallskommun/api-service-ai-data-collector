@@ -1,7 +1,5 @@
 package se.sundsvall.aidatacollector.datasource.confluence.integration.confluence;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ReadListener;
 import jakarta.servlet.ServletException;
@@ -24,6 +22,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.filter.OncePerRequestFilter;
+import tools.jackson.databind.json.JsonMapper;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Optional.ofNullable;
@@ -65,8 +64,7 @@ class WebhookSignatureVerificationConfiguration {
 
 	static class WebhookSignatureVerificationFilter extends OncePerRequestFilter {
 
-		private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper()
-			.configure(SerializationFeature.INDENT_OUTPUT, false);
+		private static final JsonMapper OBJECT_MAPPER = new JsonMapper();
 
 		private final Map<String, HmacUtils> hmacUtils = new HashMap<>();
 
@@ -110,7 +108,7 @@ class WebhookSignatureVerificationConfiguration {
 				.orElse("");
 			// Verify
 			if (!bodySignature.equals(headerSignature)) {
-				LOG.info("Webhook signature verification failed (municipalityId: {})", sanitizedMunicipalityId);
+				LOG.info("Webhook signature verification failed (municipalityId: {}). Minified body: [{}], computed: [{}], header: [{}]", sanitizedMunicipalityId, minifiedBody, bodySignature, headerSignature);
 
 				final var problem = ProblemDetail.forStatus(FORBIDDEN);
 				problem.setDetail("Webhook signature verification failed");

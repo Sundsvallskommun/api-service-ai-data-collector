@@ -1,7 +1,5 @@
 package se.sundsvall.aidatacollector.datasource.confluence.api;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Map;
 import org.apache.commons.codec.digest.HmacUtils;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.webtestclient.autoconfigure.AutoConfigureWebTestClient;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import se.sundsvall.aidatacollector.Application;
@@ -18,9 +17,9 @@ import se.sundsvall.aidatacollector.datasource.confluence.api.model.ConfluenceWe
 import se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.ConfluenceIntegrationProperties;
 import se.sundsvall.aidatacollector.datasource.confluence.model.EventType;
 import se.sundsvall.aidatacollector.test.annotation.UnitTest;
+import tools.jackson.databind.json.JsonMapper;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
-import static com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT;
 import static org.apache.commons.codec.digest.HmacAlgorithms.HMAC_SHA_256;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
@@ -35,11 +34,12 @@ import static se.sundsvall.aidatacollector.datasource.confluence.model.EventType
 
 @UnitTest
 @SpringBootTest(classes = Application.class, webEnvironment = RANDOM_PORT)
+@AutoConfigureWebTestClient
 class ConfluenceWebhookResourcesTests {
 
-	private final ObjectMapper objectMapper = new ObjectMapper()
-		.configure(INDENT_OUTPUT, false)
-		.setSerializationInclusion(NON_NULL);
+	private final JsonMapper objectMapper = JsonMapper.builder()
+		.changeDefaultPropertyInclusion(v -> com.fasterxml.jackson.annotation.JsonInclude.Value.construct(NON_NULL, NON_NULL))
+		.build();
 
 	private HmacUtils hmacUtils;
 
@@ -116,13 +116,9 @@ class ConfluenceWebhookResourcesTests {
 	}
 
 	private String createHmacSignature(final ConfluenceWebhookData request) {
-		try {
-			final var body = objectMapper.writeValueAsString(request);
-			final var minifiedBody = objectMapper.readTree(body).toString();
+		final var body = objectMapper.writeValueAsString(request);
+		final var minifiedBody = objectMapper.readTree(body).toString();
 
-			return "sha256=" + hmacUtils.hmacHex(minifiedBody);
-		} catch (final JsonProcessingException e) {
-			throw new IllegalStateException("Unable to create HMAC signature", e);
-		}
+		return "sha256=" + hmacUtils.hmacHex(minifiedBody);
 	}
 }

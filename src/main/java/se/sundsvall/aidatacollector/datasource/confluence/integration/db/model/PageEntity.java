@@ -15,16 +15,16 @@ public class PageEntity {
 	@Column(name = "page_id", length = 16)
 	private String pageId;
 
-	@Column(name = "municipality_id", length = 4)
+	@Column(name = "municipality_id", length = 4, nullable = false)
 	private String municipalityId;
 
-	@Column(name = "eneo_group_id", length = 36)
+	@Column(name = "eneo_group_id", length = 36, nullable = false)
 	private String eneoGroupId;
 
-	@Column(name = "blob_id", length = 36)
+	@Column(name = "blob_id", length = 36, nullable = false)
 	private String eneoBlobId;
 
-	@Column(name = "updated_at")
+	@Column(name = "updated_at", nullable = false)
 	private LocalDateTime updatedAt;
 
 	public PageEntity() {}

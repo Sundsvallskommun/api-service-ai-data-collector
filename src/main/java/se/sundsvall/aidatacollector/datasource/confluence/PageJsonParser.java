@@ -1,6 +1,5 @@
 package se.sundsvall.aidatacollector.datasource.confluence;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
@@ -25,10 +24,10 @@ class PageJsonParser {
 
 	private final ParseContext parseContext;
 
-	PageJsonParser(final ObjectMapper objectMapper) {
+	PageJsonParser() {
 		parseContext = JsonPath.using(Configuration.defaultConfiguration()
-			.jsonProvider(new JacksonJsonProvider(objectMapper))
-			.mappingProvider(new JacksonMappingProvider(objectMapper))
+			.jsonProvider(new JacksonJsonProvider())
+			.mappingProvider(new JacksonMappingProvider())
 			.addOptions(SUPPRESS_EXCEPTIONS));
 	}
 

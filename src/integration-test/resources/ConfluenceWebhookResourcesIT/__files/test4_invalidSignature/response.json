@@ -1,5 +1,5 @@
 {
-	"type": "about:blank",
+	"type": null,
 	"title": "Forbidden",
 	"status": 403,
 	"detail": "Webhook signature verification failed",
