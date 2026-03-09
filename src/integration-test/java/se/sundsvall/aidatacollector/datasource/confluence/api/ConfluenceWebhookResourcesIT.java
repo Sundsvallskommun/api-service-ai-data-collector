@@ -1,26 +1,24 @@
 package se.sundsvall.aidatacollector.datasource.confluence.api;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlMergeMode;
+import se.sundsvall.aidatacollector.Application;
+import se.sundsvall.aidatacollector.datasource.confluence.integration.db.DbIntegration;
+import se.sundsvall.dept44.test.AbstractAppTest;
+import se.sundsvall.dept44.test.annotation.wiremock.WireMockAppTestSuite;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.http.HttpStatus.OK;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.jdbc.SqlMergeMode;
-import se.sundsvall.dept44.test.AbstractAppTest;
-import se.sundsvall.dept44.test.annotation.wiremock.WireMockAppTestSuite;
-import se.sundsvall.aidatacollector.Application;
-import se.sundsvall.aidatacollector.datasource.confluence.integration.db.DbIntegration;
-
 @WireMockAppTestSuite(files = "classpath:/ConfluenceWebhookResourcesIT/", classes = Application.class)
 @Sql("/db/truncate.sql")
 @SqlMergeMode(SqlMergeMode.MergeMode.MERGE)
-// @DirtiesContext is used since the custom Eneo OAuth2 token service should get a new token for
-// each test, instead of reusing the one fetched in previous tests, if any
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+	// @DirtiesContext is used since the custom Eneo OAuth2 token service should get a new token for
+	// each test, instead of reusing the one fetched in previous tests, if any
 class ConfluenceWebhookResourcesIT extends AbstractAppTest {
 
 	@Autowired

@@ -1,27 +1,27 @@
 openapi: 3.1.0
 info:
   title: AI Data Collector
-  contact: { }
+  contact: {}
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT
   version: "1.0"
 servers:
-  - url: http://localhost:58831
-    description: Generated server url
+- url: http://localhost:49777
+  description: Generated server url
 paths:
   /{municipalityId}/confluence/webhook-event:
     post:
       tags:
-        - Confluence Datasource Resources
+      - Confluence Datasource Resources
       summary: Receives and handles incoming Confluence webhook data
       operationId: handleWebhookEvent
       parameters:
-        - name: municipalityId
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: municipalityId
+        in: path
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -34,7 +34,7 @@ paths:
   /api-docs:
     get:
       tags:
-        - API
+      - API
       summary: OpenAPI
       operationId: getApiDocs
       responses:
@@ -59,10 +59,10 @@ components:
           type: string
           description: Event type
           enum:
-            - page_created
-            - page_updated
-            - page_removed
-            - page_restored
+          - page_created
+          - page_updated
+          - page_removed
+          - page_restored
         userKey:
           type: string
         page:
@@ -70,8 +70,8 @@ components:
         updateTrigger:
           type: string
       required:
-        - event
-        - page
+      - event
+      - page
     Page:
       type: object
       properties:
@@ -79,5 +79,5 @@ components:
           type: integer
           format: int64
       required:
-        - id
-  securitySchemes: { }
+      - id
+  securitySchemes: {}
