@@ -15,7 +15,7 @@
 		<shedlock.version>7.7.0</shedlock.version>
 		<jsoup.version>1.22.2</jsoup.version>
 		<auth0.java-jwt.version>4.5.1</auth0.java-jwt.version>
-		<commons-codec.version>1.21.0</commons-codec.version>
+		<commons-codec.version>1.22.0</commons-codec.version>
 		<generated-sources-path>${project.build.directory}/generated-sources</generated-sources-path>
 		<generated-sources-java-path>src/main/java</generated-sources-java-path>
 	</properties>
