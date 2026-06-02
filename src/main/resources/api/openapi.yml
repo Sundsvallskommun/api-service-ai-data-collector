@@ -7,7 +7,7 @@ info:
     url: https://opensource.org/licenses/MIT
   version: "1.0"
 servers:
-- url: http://localhost:49777
+- url: http://localhost:51279
   description: Generated server url
 paths:
   /{municipalityId}/confluence/webhook-event:
