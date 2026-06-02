@@ -21,7 +21,7 @@ public record ConfluenceWebhookData(
 
 	Long timestamp,
 
-	String updateTrigger){
+	String updateTrigger) {
 
 	public record Page(@NotNull Long id) {
 	}
