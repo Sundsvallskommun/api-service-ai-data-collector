@@ -1,18 +1,18 @@
 package se.sundsvall.aidatacollector.datasource.confluence;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
+import se.sundsvall.aidatacollector.Application;
+import se.sundsvall.aidatacollector.datasource.confluence.integration.db.DbIntegration;
+import se.sundsvall.aidatacollector.integration.eneo.EneoIntegration;
+import se.sundsvall.dept44.test.AbstractAppTest;
+import se.sundsvall.dept44.test.annotation.wiremock.WireMockAppTestSuite;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
-import se.sundsvall.dept44.test.AbstractAppTest;
-import se.sundsvall.dept44.test.annotation.wiremock.WireMockAppTestSuite;
-import se.sundsvall.aidatacollector.Application;
-import se.sundsvall.aidatacollector.datasource.confluence.integration.db.DbIntegration;
-import se.sundsvall.aidatacollector.integration.eneo.EneoIntegration;
 
 @WireMockAppTestSuite(files = "classpath:/ConfluenceImportIT/", classes = Application.class)
 class ConfluenceImportIT extends AbstractAppTest {
