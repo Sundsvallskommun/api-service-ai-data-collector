@@ -115,7 +115,8 @@ class WebhookSignatureVerificationConfiguration {
 
 				response.setStatus(FORBIDDEN.value());
 				response.setHeader(CONTENT_TYPE, APPLICATION_PROBLEM_JSON_VALUE);
-				response.getWriter().println(OBJECT_MAPPER.writeValueAsString(problem));
+				// Bytes, not the writer: JSON is UTF-8, and the container's writer would add charset=ISO-8859-1
+				response.getOutputStream().write(OBJECT_MAPPER.writeValueAsBytes(problem));
 				response.flushBuffer();
 			} else {
 				LOG.debug("Webhook signature verified");

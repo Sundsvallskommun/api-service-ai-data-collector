@@ -17,8 +17,8 @@ import static org.springframework.http.HttpStatus.OK;
 @WireMockAppTestSuite(files = "classpath:/ConfluenceWebhookResourcesIT/", classes = Application.class)
 @Sql("/db/truncate.sql")
 @SqlMergeMode(SqlMergeMode.MergeMode.MERGE)
-	// @DirtiesContext is used since the custom Eneo OAuth2 token service should get a new token for
-	// each test, instead of reusing the one fetched in previous tests, if any
+// @DirtiesContext is used since the custom Eneo OAuth2 token service should get a new token for
+// each test, instead of reusing the one fetched in previous tests, if any
 class ConfluenceWebhookResourcesIT extends AbstractAppTest {
 
 	@Autowired

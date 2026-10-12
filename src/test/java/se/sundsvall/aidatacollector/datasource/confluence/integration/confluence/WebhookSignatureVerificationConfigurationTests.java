@@ -5,8 +5,6 @@ import jakarta.servlet.ServletInputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.Map;
 import org.apache.commons.codec.digest.HmacAlgorithms;
 import org.apache.commons.codec.digest.HmacUtils;
@@ -14,10 +12,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.mock.web.MockHttpServletResponse;
 import se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.WebhookSignatureVerificationConfiguration.WebhookSignatureVerificationFilter;
 import se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.WebhookSignatureVerificationConfiguration.WebhookSignatureVerificationFilter.BodyCachingHttpServletRequestWrapper;
 import se.sundsvall.aidatacollector.datasource.confluence.integration.confluence.WebhookSignatureVerificationConfiguration.WebhookSignatureVerificationFilter.BodyCachingServletInputStream;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
@@ -129,38 +129,34 @@ class WebhookSignatureVerificationConfigurationTests {
 	void doFilterInternalWithInvalidSignature() throws Exception {
 		final var filter = createFilter();
 		final var body = "{\"key\": \"value\"}";
-		final var stringWriter = new StringWriter();
-		final var printWriter = new PrintWriter(stringWriter);
+		final var response = new MockHttpServletResponse();
 
 		when(requestMock.getRequestURI()).thenReturn("/" + MUNICIPALITY_ID + "/confluence/webhook-event");
 		when(requestMock.getInputStream()).thenReturn(createServletInputStream(body));
 		when(requestMock.getHeader(SIGNATURE_HEADER)).thenReturn(SIGNATURE_PREFIX + "invalidSignature");
-		when(responseMock.getWriter()).thenReturn(printWriter);
 
-		filter.doFilterInternal(requestMock, responseMock, filterChainMock);
+		filter.doFilterInternal(requestMock, response, filterChainMock);
 
-		verify(responseMock).setStatus(FORBIDDEN.value());
-		verify(responseMock).setHeader("Content-Type", "application/problem+json");
 		verify(filterChainMock, never()).doFilter(any(), any());
 
-		assertThat(stringWriter.toString()).contains("Webhook signature verification failed");
+		assertThat(response.getStatus()).isEqualTo(FORBIDDEN.value());
+		assertThat(response.getContentType()).isEqualTo("application/problem+json");
+		assertThat(response.getContentAsString(UTF_8)).contains("Webhook signature verification failed");
 	}
 
 	@Test
 	void doFilterInternalWithMissingSignatureHeader() throws Exception {
 		final var filter = createFilter();
 		final var body = "{\"key\": \"value\"}";
-		final var stringWriter = new StringWriter();
-		final var printWriter = new PrintWriter(stringWriter);
+		final var response = new MockHttpServletResponse();
 
 		when(requestMock.getRequestURI()).thenReturn("/" + MUNICIPALITY_ID + "/confluence/webhook-event");
 		when(requestMock.getInputStream()).thenReturn(createServletInputStream(body));
 		when(requestMock.getHeader(SIGNATURE_HEADER)).thenReturn(null);
-		when(responseMock.getWriter()).thenReturn(printWriter);
 
-		filter.doFilterInternal(requestMock, responseMock, filterChainMock);
+		filter.doFilterInternal(requestMock, response, filterChainMock);
 
-		verify(responseMock).setStatus(FORBIDDEN.value());
+		assertThat(response.getStatus()).isEqualTo(FORBIDDEN.value());
 		verify(filterChainMock, never()).doFilter(any(), any());
 	}
 
